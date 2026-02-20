@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+
+body {
+    background: blanchedalmond;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+h1 {
+    margin: 20px;
+    font-size: 80px;
+}
+
+header {
+    border: 1px solid gray;
+    border-radius: 10px;
+    background: #FFFFFF;
+    padding: 10px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+button {
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px 20px; /*Primeiro valor cima/baixo segundo valor direita/esquerda*/
+    border-radius: 5px;
+    color: #FFFFFF;
+    transition: all 0.6;
+}
+
+button:hover {
+    background: #800080;
+    box-shadow: 0 4px 8px gray;
+}
+
+#btnReiniciar {
+    background: green;
+    color: black;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 5px;
+    transition: all 0.6;
+}
+
+#btnReiniciar:hover {
+    background: greenyellow;
+    box-shadow: 0 4px 8px gray;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 120px); /*Quantidade colunas ///// largura da coluna*/
+    gap: 30px
+}
+
+.btnCards.selecionado {
+    background: green;
+}
+
+
+.btnCards {
+    background: red;
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+}
