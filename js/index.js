@@ -32,6 +32,7 @@ function virar(card) {
     }
     segunda = card;
     tentativas++
+    verificar();
 }
 
 
@@ -46,7 +47,18 @@ function embaralhar(array) {
 }
 
 function verificar() {
-
+    if(primeira.textContent == segunda.textContent) {
+        console.log("acertou...")
+    } else{
+        setTimeout(() => {
+            primeira.textContent ="?"
+            segunda.textContent = "?"
+            primeira.classList.remove("selecionado");
+            segunda.classList.remove("selecionado")
+            primeira = null;
+            segunda = null;
+        },600)   
+    }
 }
 
 
