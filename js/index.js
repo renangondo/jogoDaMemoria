@@ -1,4 +1,4 @@
-const palavras = ["DIV", "META","HEADER", "JS", "FOOTER", "BODY"];
+let palavras = ["DIV", "META","HEADER", "JS", "FOOTER", "BODY"];
 
 embaralhar(palavras);
 
@@ -6,13 +6,31 @@ embaralhar(palavras);
 
 const btnReiniciar = document.getElementById("btnReiniciar")
 const btnCards = document.querySelectorAll(".btnCards")
+const url = "https://darkblue-frog-779608.hostingersite.com";
 
 let primeira = null;
 let segunda = null;
 let tentativas = 0;
 
 
-iniciar()
+
+buscarPalavras()
+
+async function buscarPalavras() {
+    try {
+        const response = await fetch(`${url}/api/palavras.php?quantidade=12`)
+        if (!response.ok) {
+            throw new Error(`Error ${request.status}`)
+        }
+        palavras = await response.json();
+        console.log(palavras)
+        iniciar()
+    }catch(error){
+        console.log(error)
+    }
+    
+    
+}
 
 function iniciar() {
     let embaralhadas = embaralhar([...palavras, ...palavras])
@@ -62,4 +80,4 @@ function verificar() {
 }
 
 
-btnReiniciar.onclick = () => iniciar()
+btnReiniciar.onclick = () => buscarPalavras()
