@@ -14,7 +14,9 @@ let tentativas = 0;
 
 
 
+
 buscarPalavras()
+salvarPartida()
 
 async function buscarPalavras() {
     try {
@@ -28,8 +30,38 @@ async function buscarPalavras() {
     }catch(error){
         console.log(error)
     }
-    
-    
+}
+
+async function salvarPartida() {
+    try {
+        const response = await fetch(`${url}/api/salvar.php`,{
+            method:'POST',
+            header:{
+                'Content-Type': 'application/json',
+            },
+            body:JSON.stringify({nome: "Renan", tempo:1, tentativas:1})
+        });
+        if(!response.ok) {
+            const errorBody = await response.json();
+            throw new Error(`ERRO ${request.status}: ${errorBody.erro}`);
+        }
+
+        const data = await response.json();
+        console.log(data)
+
+
+    }catch(error){
+        console.log(error)
+    }
+}
+
+async function ranking() {
+    try{
+        const response = await fetch(`${url}`)
+
+    }catch(error){
+        console.log(error)
+    }
 }
 
 function iniciar() {
