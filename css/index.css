@@ -1,3 +1,8 @@
+:root{
+    --bg:blanchedalmond;
+    --bg-button: red;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,9 +10,14 @@
     font-family: "Roboto", sans-serif;
 }
 
+body[data-theme="dark"] {
+
+    --bg: black;
+    --bg-button: white;
+}
 
 body {
-    background: blanchedalmond;
+    background: var(--bg);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -32,6 +42,8 @@ header {
 }
 
 
+
+
 button {
     border: none;
     cursor: pointer;
@@ -40,6 +52,7 @@ button {
     border-radius: 5px;
     color: #FFFFFF;
     transition: all 0.6;
+    background: var(--bg-button)
 }
 
 button:hover {
