@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +10,13 @@
         rel="stylesheet">
     <title>Jogo da Memória</title>
 </head>
-<body data-theme="light">
+<body >
 
     <h1>JOGO DA MEMÓRIA</h1>
     <header>
         <span>Tentativas: 0 </span>
         <button id="btnReiniciar">Reiniciar</button>
-        <button onclick="alterarTema()">Alterar tema</button>
+        <button id="btnAlterarTema">Alterar tema</button>
     </header>
      
     <div class="cards">
@@ -34,7 +34,7 @@
         <button class="btnCards">?</button>
     </div>
 
-    <script src="./js/index.js"></script>
+    <script  type="module" src="./js/main.js"></script>
 
 </body>
 

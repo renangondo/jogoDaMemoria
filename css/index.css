@@ -10,11 +10,11 @@
     font-family: "Roboto", sans-serif;
 }
 
-body[data-theme="dark"] {
-
+html[data-theme="dark"]{
     --bg: black;
     --bg-button: white;
 }
+
 
 body {
     background: var(--bg);
