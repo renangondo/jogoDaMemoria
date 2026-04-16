@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,8 @@
         rel="stylesheet">
     <title>Jogo da Memória</title>
 </head>
-<body >
+
+<body>
 
     <h1>JOGO DA MEMÓRIA</h1>
     <header>
@@ -18,7 +20,17 @@
         <button id="btnReiniciar">Reiniciar</button>
         <button id="btnAlterarTema">Alterar tema</button>
     </header>
-     
+    <div id="menu">
+        <button id="btnNovoJogo">Novo Jogo</button>
+        <button id="btnRanking">Ranking</button>
+    </div>
+
+    <div id="ranking" style="display:none;">
+        <h2>🏆 Ranking</h2>
+        <ul id="listaRanking"></ul>
+        <button id="voltarMenu">Voltar</button>
+    </div>
+    
     <div class="cards">
         <button class="btnCards">?</button>
         <button class="btnCards">?</button>
@@ -34,7 +46,13 @@
         <button class="btnCards">?</button>
     </div>
 
-    <script  type="module" src="./js/main.js"></script>
+    <div id="salvar" style="display:none;">
+        <h2>Você venceu!</h2>
+        <input type="text" id="nomeJogador" placeholder="Seu nome">
+        <button id="btnSalvar">Salvar</button>
+    </div>
+
+    <script type="module" src="./js/main.js"></script>
 
 </body>
 

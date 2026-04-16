@@ -19,14 +19,14 @@ export async function salvarPartida(partida) {
     try {
         const response = await fetch(`${URL}/api/salvar.php`, {
             method: 'POST',
-            header: {
+            headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(partida)
         });
         if (!response.ok) {
             const errorBody = await response.json();
-            throw new Error(`ERRO ${request.status}: ${errorBody.erro}`);
+            throw new Error(`ERRO ${response.status}: ${errorBody.erro}`);
         }
 
         const data = await response.json();
@@ -39,3 +39,19 @@ export async function salvarPartida(partida) {
 }
 
 
+export async function buscarRanking() {
+    try {
+        const response = await fetch(`${URL}/api/ranking.php`);
+
+        if (!response.ok) {
+            throw new Error(`Erro ${response.status}`);
+        }
+
+        const dados = await response.json();
+        return dados;
+
+    } catch (error) {
+        console.log("Erro ao buscar ranking:", error);
+        return [];
+    }
+}
