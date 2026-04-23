@@ -1,8 +1,7 @@
 
-import { iniciar } from "./game.js"
-import { salvarPartida, buscarPalavras } from "./api.js";
+import { iniciar, obterTentativas } from "./game.js";
+import { salvarPartida, buscarRanking } from "./api.js";
 import { iniciarTema, alterarTema } from "./theme.js";
-import { buscarRanking } from "./api.js";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -26,7 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         lista.innerHTML = "<li>Carregando...</li>";
 
-        const dados = await buscarRanking();
+        let dados = await buscarRanking();
+        console.log("Ranking recebido:", dados);
+
+        if (!Array.isArray(dados)) {
+            dados = dados.ranking || dados.dados || [];
+        }
 
         lista.innerHTML = "";
 
@@ -35,16 +39,15 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        dados.sort((a, b) => b.pontos - a.pontos);
+        dados.sort((a, b) => Number(a.tentativas) - Number(b.tentativas));
 
+        console.log(dados[0]);
         dados.forEach((jogador, index) => {
             const li = document.createElement("li");
-
             li.innerHTML = `
             <span>#${index + 1} - ${jogador.nome}</span>
-            <span>${jogador.pontos}</span>
+            <span>${jogador.tentativas}</span>
         `;
-
             lista.appendChild(li);
         });
     };
@@ -55,18 +58,27 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     document.getElementById("btnSalvar").onclick = async () => {
-        const nome = document.getElementById("nomeJogador").value;
+        const nome = document.getElementById("nomeJogador").value.trim();
+
+        if (!nome) {
+            alert("Digite seu nome");
+            return;
+        }
 
         const partida = {
             nome: nome,
-            pontos: 100
+            tentativas: obterTentativas(),
+            tempo: 0
         };
-        // 👇 abre ranking automaticamente
-        document.getElementById("salvar").style.display = "none";
-        document.getElementById("btnRanking").click();
+
+        console.log("Enviando para API:", partida);
 
         await salvarPartida(partida);
+
+        document.getElementById("salvar").style.display = "none";
         alert("Salvo!");
+
+        document.getElementById("btnRanking").click();
     };
 });
 

@@ -4,7 +4,7 @@ export async function buscarPalavras() {
     try {
         const response = await fetch(`${URL}/api/palavras.php?quantidade=12`)
         if (!response.ok) {
-            throw new Error(`Error ${request.status}`)
+            throw new Error(`Error ${response.status}`)
         }
         const palavras = await response.json();
         console.log(palavras)
@@ -31,11 +31,12 @@ export async function salvarPartida(partida) {
 
         const data = await response.json();
         console.log(data)
-
-
+        console.log("Enviando para API:", partida);
+        
     } catch (error) {
         console.log(error)
     }
+    
 }
 
 

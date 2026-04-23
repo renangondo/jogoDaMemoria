@@ -45,7 +45,6 @@ export function virar(card) {
     tentativas++;
     spanTentativas.textContent = `Tentativas: ${tentativas}`;
     segunda = card;
-    tentativas++;
     bloqueado = true;
 
     verificar();
@@ -83,6 +82,9 @@ export function verificar() {
 
 btnReiniciar.onclick = () => iniciar()
 
+export function obterTentativas() {
+    return tentativas;
+}
 
 
 
